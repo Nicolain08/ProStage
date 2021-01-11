@@ -9,46 +9,50 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProstageController extends AbstractController
 {
     /**
-     * @Route("/", name="accueil")
+     * @Route("/", name="stages")
      */
-    public function afficherAccueil(): Response
+    public function afficherStages(): Response
     {
-        return $this->render('prostage/baseTP1.html.twig', [
-            'controller_name' => 'Bienvenue sur la page d accueil de Prostages',
-			'page_title' => 'Prostage_Accueil',
+        return $this->render('prostage/liste.html.twig', [
+			'page_title' => 'Prostage_Liste des stages',
         ]);
     }
 	
 	/**
-     * @Route("/entreprises", name="entreprises")
+     * @Route("/entreprise/{nomEntreprise}", name="stagesEntreprise")
      */
-    public function afficherEntreprises(): Response
+    public function afficherStagesEntreprise($nomEntreprise): Response
     {
-        return $this->render('prostage/baseTP1.html.twig', [
-            'controller_name' => 'Cette page affichera la liste des entreprises proposant un stage',
-			'page_title' => 'Prostage_Entreprises',
+        return $this->render('prostage/stagesEntreprise.html.twig', [
+			'page_title' => "Prostage_Liste des stages proposés par $nomEntreprise",
+			'entreprise' => "$nomEntreprise",
         ]);
     }
 	
 	/**
-     * @Route("/formations", name="formations")
+     * @Route("/formation/{nomFormation}", name="stagesFormation")
      */
-    public function afficherFormations(): Response
+    public function afficherStagesFormation($nomFormation): Response
     {
-        return $this->render('prostage/baseTP1.html.twig', [
-            'controller_name' => 'Cette page affichera la liste des formations de l IUT',
-			'page_title' => 'Prostage_Formations',
+        return $this->render('prostage/stagesFormation.html.twig', [
+			'page_title' => "Prostage_Liste des stages pour la formation $nomFormation",
+			'formation' => "$nomFormation"
         ]);
     }
 	
 	/**
-     * @Route("/stages/{id}", name="stages")
+     * @Route("/detail/{id}", name="detailStage")
      */
-    public function afficherStages($id): Response
+    public function afficherDetailStage($id): Response
     {
-        return $this->render('prostage/baseTP1.html.twig', [
-            'controller_name' => "Cette page affichera le descriptif du stage ayant pour identifiant $id",
-			'page_title' => 'Prostage_Stages',
+        return $this->render('prostage/detail.html.twig', [
+			'page_title' => 'Prostage_Detail : Titre du stage',
+			'titre_stage' => 'Développement application web',
+			'activite' => 'Recherche aéronautique',
+			'description' => 'Une description',
+			'formations' => 'DUT Informatique',
+			'adresse' => '31 rue de l\'Entreprise, 64100 Bayonne',
+			'mail' => 'adresseEmail@gmail.com',
         ]);
     }
 }

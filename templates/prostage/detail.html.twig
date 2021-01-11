@@ -4,49 +4,62 @@
 
 
 {% block body %}
-<div class="container-fluid">
+<div class="container">
 	<!--Titre du stage-->
 	<div class="row">
 		<div class="col-md-12">
-			<h1>{{ titre_stage }}</h1>
+			<div class="card">
+			  <div class="card-body">
+				<h1>{{ titre_stage }}</h1>
+			  </div>
+			</div>
 		</div>
 	</div>
 	<!--Informations générales de l'entreprise-->
 	<div class="row">
 		<div class="col-md-12">
-			<p>
-				<h3>Entreprise :</h3>
-				{{ titre_stage }}<br>
-				Activité = {{ activite }}<br>
-			</p>
+			<div class="card">
+			  <div class="card-body">
+				<p>
+					<h3>Entreprise :</h3>
+					{{ titre_stage }}<br>
+					Activité = {{ activite }}<br>
+				</p>
+			  </div>
+			</div>			
 		</div>
 	</div>
-	<!--Description du stage-->
 	<div class="row">
 		<div class="col-md-12">
-			<p>
-				<h3>Description du stage :</h3>
-				{{ description }}<br>
-			</p>
-		</div>
-	</div>
-	<!--Formations-->
-	<div class="row">
-		<div class="col-md-12">
-			<p>
-				<h3>Stage proposé pour les formations :</h3>
-				{{ formations }}<br>
-			</p>
+			<div class="card">
+			  <div class="card-body">
+				<!--Description du stage-->
+				<p>
+					<h3>Description du stage :</h3>
+					{{ description }}<br>
+				</p>
+				<!--Formations-->
+				<p>
+					<h3>Stage proposé pour les formations :</h3>
+					{{ formations }}<br>
+				</p>
+			  </div>
+			</div>
+			
 		</div>
 	</div>
 	<!--Coordonnées entreprise-->
 	<div class="row">
 		<div class="col-md-12">
-			<p>
-				<h3>Coordonnées :</h3>
-				{{ adresse }}<br>
-				{{ mail }}<br>
-			</p>
+			<div class="card">
+			  <div class="card-body">
+				<p>
+					<h3>Coordonnées :</h3>
+					{{ adresse }}<br>
+					{{ mail }}<br>
+				</p>
+			  </div>
+			</div>
 		</div>
 	</div>
 </div>
