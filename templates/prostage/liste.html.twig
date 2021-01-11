@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<!--Menu de navigation-->
+			{% block menu %}
+			<div class="col-4">
+				<h1>Liste des stages</h1>
+				{% block filtres %}
+				
+				{% endblock %}
+				<h5>Filtrer par formation :</h5>
+				<ul class="nav flex-column">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/formation/DUTInformatique">DUT Informatique</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/formation/LPM">Licence Professionelle Multimédia</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="/formation/DUTIC">DU TIC</a>
+				  </li>
+				</ul>
+				<h5>Filtrer par entreprise :</h5>
+				<ul class="nav flex-column">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="/entreprise/SopraSteria">SopraSteria</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="Ubisoft">Ubisoft</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="Total">Total</a>
+				  </li>
+				  <!--
+				  <li class="nav-item">
+					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				  </li>
+				  -->
+				</ul>
+			</div>
+			{% endblock %}
+			<!--Liste des stages-->
+			<div class="col-8">
+				{% block liste %}
+				<div class="row row-cols-1 row-cols-md-2 g-4">
+				  <div class="col">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Développement application web</h3>
+						<h6 class="card-title">Proposé par :</h6>
+						<p class="card-text">SopraSteria</p>
+						<h6 class="card-title">Pour les formations :</h6>
+						<p class="card-text">Dut Informatique, DU TIC</p>
+					  </div>
+					</div>
+				  </div>
+				  <div class="col">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Développement application web en mode déconnecté</h3>
+						<h6 class="card-title">Proposé par :</h6>
+						<p class="card-text">SopraSteria</p>
+						<h6 class="card-title">Pour les formations :</h6>
+						<p class="card-text">Dut Informatique, DU TIC</p>
+					  </div>
+					</div>
+				  </div>
+				  <div class="col">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Développement application mobile</h3>
+						<h6 class="card-title">Proposé par :</h6>
+						<p class="card-text">Total</p>
+						<h6 class="card-title">Pour les formations :</h6>
+						<p class="card-text">Dut Informatique</p>
+					  </div>
+					</div>
+				  </div>
+				  <div class="col">
+					<div class="card">
+					  <div class="card-body">
+						<h5 class="card-title">Restructuration Base de Données</h3>
+						<h6 class="card-title">Proposé par :</h6>
+						<p class="card-text">Ubisoft</p>
+						<h6 class="card-title">Pour les formations :</h6>
+						<p class="card-text">DU TIC</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

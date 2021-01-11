@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+	<!--Titre du stage-->
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{ titre_stage }}</h1>
+		</div>
+	</div>
+	<!--Informations générales de l'entreprise-->
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				<h3>Entreprise :</h3>
+				{{ titre_stage }}<br>
+				Activité = {{ activite }}<br>
+			</p>
+		</div>
+	</div>
+	<!--Description du stage-->
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				<h3>Description du stage :</h3>
+				{{ description }}<br>
+			</p>
+		</div>
+	</div>
+	<!--Formations-->
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				<h3>Stage proposé pour les formations :</h3>
+				{{ formations }}<br>
+			</p>
+		</div>
+	</div>
+	<!--Coordonnées entreprise-->
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				<h3>Coordonnées :</h3>
+				{{ adresse }}<br>
+				{{ mail }}<br>
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
