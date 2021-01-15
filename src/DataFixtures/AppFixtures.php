@@ -58,19 +58,19 @@ class AppFixtures extends Fixture
 			
 			$stage1->addFormation($LPM);
 			$LPM->addStage($stage1);
-			$manager->persist($LPM);
 			$stage1->addFormation($DUTINFO);
 			$DUTINFO->addStage($stage1);
-			$manager->persist($DUTINFO);
 			$stage1->addFormation($DUTIC);
 			$DUTIC->addStage($stage1);
-			$manager->persist($DUTIC);
 			
 			$stage1->setEntreprise($SopraSteria);
 			$SopraSteria->addStage($stage1);
-			$manager->persist($SopraSteria);
 			
 			$manager->persist($stage1);
+			$manager->persist($SopraSteria);
+			$manager->persist($DUTIC);
+			$manager->persist($DUTINFO);
+			$manager->persist($LPM);
 			
 			//Stage #2
 			$stage2 = new Stage();
@@ -80,16 +80,16 @@ class AppFixtures extends Fixture
 			
 			$stage2->addFormation($DUTINFO);
 			$DUTINFO->addStage($stage2);
-			$manager->persist($DUTINFO);
 			$stage2->addFormation($LPM);
 			$LPM->addStage($stage2);
-			$manager->persist($LPM);
-			
+
 			$stage2->setEntreprise($Ubisoft);
 			$Ubisoft->addStage($stage2);
-			$manager->persist($Ubisoft);
-			
+
 			$manager->persist($stage2);
+			$manager->persist($Ubisoft);
+			$manager->persist($LPM);
+			$manager->persist($DUTINFO);
 			
 			//Stage #3
 			$stage3 = new Stage();
@@ -99,14 +99,13 @@ class AppFixtures extends Fixture
 			
 			$stage3->addFormation($DUTIC);
 			$DUTIC->addStage($stage3);
-			$manager->persist($DUTIC);
 			
-			$stage3->setEntreprise(SopraSteria);
+			$stage3->setEntreprise($SopraSteria);
 			$SopraSteria->addStage($stage3);
-			$manager->persist($SopraSteria);
 			
 			$manager->persist($stage3);
-			
+			$manager->persist($DUTIC);			
+
 			//Stage #4
 			$stage4 = new Stage();
 			$stage4->setIntitule("Restructuration Base de Données");
@@ -115,16 +114,16 @@ class AppFixtures extends Fixture
 			
 			$stage4->addFormation($DUTIC);
 			$DUTIC->addStage($stage4);
-			$manager->persist($DUTIC);
 			$stage4->addFormation($DUTINFO);
 			$DUTINFO->addStage($stage4);
-			$manager->persist($DUTINFO);
 			
 			$stage4->setEntreprise($Parrot);
 			$Parrot->addStage($stage4);
-			$manager->persist($Parrot);
-			
+
 			$manager->persist($stage4);
+			$manager->persist($DUTIC);			
+			$manager->persist($DUTINFO);			
+			$manager->persist($Parrot);			
 			
 			//Stage #5
 			$stage5 = new Stage();
@@ -134,14 +133,14 @@ class AppFixtures extends Fixture
 			
 			$stage5->addFormation($DUTINFO);
 			$DUTINFO->addStage($stage5);
-			$manager->persist($DUTINFO);
-			
+
 			$stage5->setEntreprise($SopraSteria);
 			$SopraSteria->addStage($stage5);
-			$manager->persist($SopraSteria);
-			
+
 			$manager->persist($stage5);
-			
+			$manager->persist($DUTINFO);			
+			$manager->persist($SopraSteria);			
+
 			//Stage #6
 			$stage6 = new Stage();
 			$stage6->setIntitule("Création API");
@@ -150,13 +149,13 @@ class AppFixtures extends Fixture
 			
 			$stage6->addFormation($DUTIC);
 			$DUTIC->addStage($stage6);
-			$manager->persist($DUTIC);
-			
+
 			$stage6->setEntreprise($Parrot);
 			$Parrot->addStage($stage6);
-			$manager->persist($Parrot);
-			
+
 			$manager->persist($stage6);
+			$manager->persist($DUTIC);			
+			$manager->persist($Parrot);		
 			
         $manager->flush();
     }

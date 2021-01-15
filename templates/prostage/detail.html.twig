@@ -10,7 +10,7 @@
 		<div class="col-md-12">
 			<div class="card text-white bg-secondary">
 			  <div class="card-body">
-				<h1>{stage.intitule}</h1>
+				<h1>{{stage.intitule}}</h1>
 			  </div>
 			</div>
 		</div>
@@ -22,8 +22,8 @@
 			  <div class="card-body">
 				<p>
 					<h3>Entreprise :</h3>
-					{stage.entreprise.nom}<br>
-					Activité = {stage.entreprise.activite}<br>
+					{{stage.entreprise.nom}}<br>
+					Activité = {{stage.entreprise.activite}}<br>
 				</p>
 			  </div>
 			</div>			
@@ -36,7 +36,7 @@
 				<!--Description du stage-->
 				<p>
 					<h3>Description du stage :</h3>
-					{stage.mission}<br>
+					{{stage.mission}}<br>
 				</p>
 				<!--Formations-->
 				<p>
@@ -57,8 +57,8 @@
 			  <div class="card-body">
 				<p>
 					<h3>Coordonnées :</h3>
-					{stage.entreprise.adresse}<br>
-					{stage.email}<br>
+					{{stage.entreprise.adresse}}<br>
+					{{stage.email}}<br>
 				</p>
 			  </div>
 			</div>

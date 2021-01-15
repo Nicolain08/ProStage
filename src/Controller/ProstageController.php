@@ -37,17 +37,19 @@ class ProstageController extends AbstractController
     public function afficherStagesEntreprise($idEntreprise): Response
     {
 		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-		$stages = $repositoryStage->findBy(["entreprise" => $idEntreprise);
+		$stages = $repositoryStage->findBy(["entreprise" => $idEntreprise]);
 		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 		$entreprises = $repositoryEntreprise->findAll();
 		$repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 		$formations = $repositoryFormation->findAll();
+		$entreprise = $repositoryEntreprise->find($idEntreprise);
 		
         return $this->render('prostage/stagesEntreprise.html.twig', [
 			'page_title' => "Prostage_Liste des stages",
 			'stages' => $stages,
 			'entreprises' => $entreprises,
 			'formations' => $formations,
+			'entreprise' => $entreprise,
         ]);
     }
 	
@@ -57,17 +59,19 @@ class ProstageController extends AbstractController
     public function afficherStagesFormation($idFormation): Response
     {
 		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-		$stages = $repositoryStage->findBy(["formations" => $idFormation);
+		$stages = $repositoryStage->findBy(["formations" => $idFormation]); //Ne fonctionne pas car formations contient plusieurs id de Formation. Nécessite de parcourir ces id pour trouver un qui correspond à $idFormation
 		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 		$entreprises = $repositoryEntreprise->findAll();
 		$repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 		$formations = $repositoryFormation->findAll();
+		$formation = $repositoryFormation->find($idFormation);
 		
         return $this->render('prostage/stagesFormation.html.twig', [
 			'page_title' => "Prostage_Liste des stages",
 			'stages' => $stages,
 			'entreprises' => $entreprises,
 			'formations' => $formations,
+			'formation' => $formation,
         ]);
     }
 	

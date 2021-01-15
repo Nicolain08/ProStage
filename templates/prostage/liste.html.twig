@@ -18,7 +18,7 @@
 					<ul class="nav flex-column">
 					  {% for formationCourante in formations %}
 					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href={{path('stagesFormation',{idFormation:formationCourante.id})}}>{formationCourante.nom}</a>
+						<a class="nav-link active" aria-current="page" href={{path('stagesFormation',{idFormation:formationCourante.id})}}>{{formationCourante.nom}}</a>
 					  </li>
 					  {% endfor %}
 					</ul>
@@ -26,7 +26,7 @@
 					<ul class="nav flex-column">
 					  {% for entrepriseCourante in entreprises %}
 					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href={{path('stagesEntreprise',{idEntreprise:entrepriseCourante.id})}}>{entrepriseCourante.nom}</a>
+						<a class="nav-link active" aria-current="page" href={{path('stagesEntreprise',{idEntreprise:entrepriseCourante.id})}}>{{entrepriseCourante.nom}}</a>
 					  </li>
 					  {% endfor %}
 					</ul>

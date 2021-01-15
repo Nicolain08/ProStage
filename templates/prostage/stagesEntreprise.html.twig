@@ -1,8 +1,8 @@
 {% extends '/prostage/liste.html.twig' %}
 
 {% block filtres %}
-<h6>proposés par {{ entreprise }}</h6>
+<h6>proposés par {{ entreprise.nom }}</h6>
 <p>
-	<a href={{path('stages'}}>Supprimer les filtres</a>
+	<a href={{path('stages')}}>Supprimer les filtres</a>
 </p>
 {% endblock %}
