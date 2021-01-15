@@ -16,32 +16,19 @@
 					{% endblock %}
 					<h5>Filtrer par formation :</h5>
 					<ul class="nav flex-column">
+					  {% for formationCourante in formations %}
 					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/formation/DUTInformatique">DUT Informatique</a>
+						<a class="nav-link active" aria-current="page" href={{path('stagesFormation',{idFormation:formationCourante.id})}}>{formationCourante.nom}</a>
 					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="/formation/LPM">Licence Professionelle Multimédia</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="/formation/DUTIC">DU TIC</a>
-					  </li>
+					  {% endfor %}
 					</ul>
 					<h5>Filtrer par entreprise :</h5>
 					<ul class="nav flex-column">
+					  {% for entrepriseCourante in entreprises %}
 					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/entreprise/SopraSteria">SopraSteria</a>
+						<a class="nav-link active" aria-current="page" href={{path('stagesEntreprise',{idEntreprise:entrepriseCourante.id})}}>{entrepriseCourante.nom}</a>
 					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="Ubisoft">Ubisoft</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="Total">Total</a>
-					  </li>
-					  <!--
-					  <li class="nav-item">
-						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-					  </li>
-					  -->
+					  {% endfor %}
 					</ul>
 				  </div>
 				</div>
@@ -53,58 +40,27 @@
 				  <div class="card-body">
 					{% block liste %}
 					<div class="row row-cols-1 row-cols-md-2 g-4">
+					  {% for stageCourant in stages %}
 					  <div class="col">
 						<div class="card">
 						  <div class="card-body">
 							<h5 class="card-title">
-								<a href="/detail/10201">Développement application web</a>
+								<a href={{path('detailStage',{id:stageCourant.id})}}>
+									{{stageCourant.intitule}}
+								</a>
 							</h5>
 							<h6 class="card-title">Proposé par :</h6>
-							<p class="card-text">SopraSteria</p>
+							<p class="card-text">{{stageCourant.entreprise.nom}}</p>
 							<h6 class="card-title">Pour les formations :</h6>
-							<p class="card-text">Dut Informatique, DU TIC</p>
+							<p class="card-text">
+							{% for formationCourante in stageCourant.formations %}
+								{{formationCourante.nom}}, 
+							{% endfor %}
+							</p>
 						  </div>
 						</div>
 					  </div>
-					  <div class="col">
-						<div class="card">
-						  <div class="card-body">
-							<h5 class="card-title">
-								<a href="/detail/10201">Développement application web en mode déconnecté</a>
-							</h5>
-							<h6 class="card-title">Proposé par :</h6>
-							<p class="card-text">SopraSteria</p>
-							<h6 class="card-title">Pour les formations :</h6>
-							<p class="card-text">Dut Informatique, DU TIC</p>
-						  </div>
-						</div>
-					  </div>
-					  <div class="col">
-						<div class="card">
-						  <div class="card-body">
-							<h5 class="card-title">
-								<a href="/detail/10201">Développement application mobile</a>
-							</h5>
-							<h6 class="card-title">Proposé par :</h6>
-							<p class="card-text">Total</p>
-							<h6 class="card-title">Pour les formations :</h6>
-							<p class="card-text">Dut Informatique</p>
-						  </div>
-						</div>
-					  </div>
-					  <div class="col">
-						<div class="card">
-						  <div class="card-body">
-							<h5 class="card-title">
-								<a href="/detail/10201">Restructuration Base de Données</a>
-							</h5>
-							<h6 class="card-title">Proposé par :</h6>
-							<p class="card-text">Ubisoft</p>
-							<h6 class="card-title">Pour les formations :</h6>
-							<p class="card-text">DU TIC</p>
-						  </div>
-						</div>
-					  </div>
+					  {% endfor %}
 					</div>
 					{% endblock %}
 				  </div>

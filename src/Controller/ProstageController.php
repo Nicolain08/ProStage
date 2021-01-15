@@ -17,33 +17,57 @@ class ProstageController extends AbstractController
     public function afficherStages(): Response
     {
 		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-		$stages = =repositoryStage->findAll();
+		$stages = $repositoryStage->findAll();
+		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+		$entreprises = $repositoryEntreprise->findAll();
+		$repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+		$formations = $repositoryFormation->findAll();
 		
         return $this->render('prostage/liste.html.twig', [
 			'page_title' => 'Prostage_Liste des stages',
-			'stages'=> $stages,
+			'stages' => $stages,
+			'entreprises' => $entreprises,
+			'formations' => $formations,
         ]);
     }
 	
 	/**
-     * @Route("/entreprise/{nomEntreprise}", name="stagesEntreprise")
+     * @Route("/entreprise/{idEntreprise}", name="stagesEntreprise")
      */
-    public function afficherStagesEntreprise($nomEntreprise): Response
+    public function afficherStagesEntreprise($idEntreprise): Response
     {
+		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+		$stages = $repositoryStage->findBy(["entreprise" => $idEntreprise);
+		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+		$entreprises = $repositoryEntreprise->findAll();
+		$repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+		$formations = $repositoryFormation->findAll();
+		
         return $this->render('prostage/stagesEntreprise.html.twig', [
-			'page_title' => "Prostage_Liste des stages proposés par $nomEntreprise",
-			'entreprise' => "$nomEntreprise",
+			'page_title' => "Prostage_Liste des stages",
+			'stages' => $stages,
+			'entreprises' => $entreprises,
+			'formations' => $formations,
         ]);
     }
 	
 	/**
-     * @Route("/formation/{nomFormation}", name="stagesFormation")
+     * @Route("/formation/{idFormation}", name="stagesFormation")
      */
-    public function afficherStagesFormation($nomFormation): Response
+    public function afficherStagesFormation($idFormation): Response
     {
+		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+		$stages = $repositoryStage->findBy(["formations" => $idFormation);
+		$repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+		$entreprises = $repositoryEntreprise->findAll();
+		$repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+		$formations = $repositoryFormation->findAll();
+		
         return $this->render('prostage/stagesFormation.html.twig', [
-			'page_title' => "Prostage_Liste des stages pour la formation $nomFormation",
-			'formation' => "$nomFormation"
+			'page_title' => "Prostage_Liste des stages",
+			'stages' => $stages,
+			'entreprises' => $entreprises,
+			'formations' => $formations,
         ]);
     }
 	
@@ -52,14 +76,12 @@ class ProstageController extends AbstractController
      */
     public function afficherDetailStage($id): Response
     {
+		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+		$stage = $repositoryStage->find($id);
+		
         return $this->render('prostage/detail.html.twig', [
-			'page_title' => 'Prostage_Detail : Titre du stage',
-			'titre_stage' => 'Développement application web',
-			'activite' => 'Recherche aéronautique',
-			'description' => 'Une description',
-			'formations' => 'DUT Informatique',
-			'adresse' => '31 rue de l\'Entreprise, 64100 Bayonne',
-			'mail' => 'adresseEmail@gmail.com',
+			'page_title' => 'Prostage_Detail de stage',
+			'stage' => $stage,
         ]);
     }
 }
