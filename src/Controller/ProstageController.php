@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Entreprise;
+use App\Entity\Formation;
+use App\Entity\Stage;
 
 class ProstageController extends AbstractController
 {
@@ -13,8 +16,12 @@ class ProstageController extends AbstractController
      */
     public function afficherStages(): Response
     {
+		$repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+		$stages = =repositoryStage->findAll();
+		
         return $this->render('prostage/liste.html.twig', [
 			'page_title' => 'Prostage_Liste des stages',
+			'stages'=> $stages,
         ]);
     }
 	
